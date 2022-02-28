@@ -43,4 +43,17 @@ public class Minimax {
         return bestMove;
     }
 
+    public static <Move> Move findBestMoveEnemy(Board<Move> board, int maxDepth){
+        double bestValue = Double.NEGATIVE_INFINITY;
+        Move bestMove = null;
+        for(Move move : board.getLegalMoves()) {
+            double result = minimax(board.move(move), false, board.getTurn(), maxDepth);
+            if(result > bestValue) {
+                bestValue = result;
+                bestMove = move;
+            }
+        }
+        return bestMove;
+    }
+
 }

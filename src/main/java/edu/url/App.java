@@ -16,8 +16,9 @@ public class App {
     public Integer getPlayerMove(){
         Integer move = -1;
         while(!board.getLegalMoves().contains(move)){
-            System.out.println("Ingrese la casilla de totito: ");
-            Integer moveInput = scanner.nextInt();
+            //System.out.println("Ingrese la casilla de totito: ");
+            Integer moveInput = Minimax.findBestMoveEnemy(board, 9);
+            //System.out.println(moveInput);
             move = moveInput;
         }
         return move;
@@ -37,7 +38,7 @@ public class App {
             }
 
             Integer computerMove = Minimax.findBestMove(board, 9);
-            System.out.println("La computadora ha decidido  " + computerMove);
+            //System.out.println("La computadora ha decidido  " + computerMove);
             board = (TotitoBoard) board.move(computerMove);
             System.out.println(board);
             if(board.isWin()){
