@@ -34,7 +34,7 @@ public class Minimax {
         double bestValue = Double.NEGATIVE_INFINITY;
         Move bestMove = null;
         for(Move move : board.getLegalMoves()) {
-            double result = minimax(board.move(move), false, board.getTurn(), maxDepth);
+            double result = alphabetapruning(board.move(move), false, board.getTurn(), maxDepth);
             if(result > bestValue) {
                 bestValue = result;
                 bestMove = move;
@@ -44,18 +44,18 @@ public class Minimax {
     }
 
     //Método para machine vs machine
-    /*public static <Move> Move findBestMoveEnemy(Board<Move> board, int maxDepth){
+    public static <Move> Move findBestMoveEnemy(Board<Move> board, int maxDepth){
         double bestValue = Double.NEGATIVE_INFINITY;
         Move bestMove = null;
         for(Move move : board.getLegalMoves()) {
-            double result = minimax(board.move(move), false, board.getTurn(), maxDepth);
+            double result = alphabetapruning(board.move(move), false, board.getTurn(), maxDepth);
             if(result > bestValue) {
                 bestValue = result;
                 bestMove = move;
             }
         }
         return bestMove;
-    }*/
+    }
 
     public static <Move> double alphabetapruning(Board<Move> board, boolean miximazing, Piece originalPlayer, int maxDepth){
         return alphabetapruning(board, miximazing, originalPlayer, maxDepth, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);

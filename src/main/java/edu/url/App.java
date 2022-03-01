@@ -5,6 +5,8 @@ import edu.url.tictactoe.TotitoBoard;
 
 import java.util.Scanner;
 
+import static edu.url.tictactoe.Minimax.findBestMoveEnemy;
+
 /**
  * Hello world!
  *
@@ -25,7 +27,7 @@ public class App {
 
     private void playTotito(){
         while(true){
-            Integer humanMove = getPlayerMove();
+            Integer humanMove = findBestMoveEnemy(board, 9);
             board = (TotitoBoard) board.move(humanMove);
 
             if(board.isWin()){
@@ -37,7 +39,7 @@ public class App {
             }
 
             Integer computerMove = Minimax.findBestMove(board, 9);
-            System.out.println("La computadora ha decidido  " + computerMove);
+            //System.out.println("La computadora ha decidido  " + computerMove);
             board = (TotitoBoard) board.move(computerMove);
             System.out.println(board);
             if(board.isWin()){
